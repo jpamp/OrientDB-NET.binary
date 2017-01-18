@@ -68,6 +68,8 @@ namespace Orient.Client
 
         public ORID(string orid)
         {
+            if (!orid.StartsWith("#"))
+                orid = "#" + orid;
             RID = orid;
         }
 
