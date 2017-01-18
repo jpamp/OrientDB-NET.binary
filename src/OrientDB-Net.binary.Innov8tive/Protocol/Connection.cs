@@ -184,7 +184,7 @@ namespace Orient.Client.Protocol
                 response.Receive();
                 return ((IOperation)operation).Response(response);
             }
-            catch (IOException e)
+            catch (IOException)
             {
                 Destroy();
                 throw;

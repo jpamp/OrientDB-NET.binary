@@ -60,6 +60,7 @@ namespace Orient.Client.Protocol.Operations
             if (_database.ProtocolVersion >= 28 || (_database.ProtocolVersion >= 20 && _database.ProtocolVersion <= 27 && !EndOfStream(reader)))
             {
                 int collectionChangesCount = reader.ReadInt32EndianAware();
+#pragma warning disable 0162
                 for (var i = 0; i < collectionChangesCount; i++)
                 {
                     throw new NotImplementedException("Collection changes not yet handled - failing rather than ignoring potentially significant information");
@@ -69,6 +70,7 @@ namespace Orient.Client.Protocol.Operations
                     //var updatedPageIndex = reader.ReadInt64EndianAware();
                     //var updatedPageOffset = reader.ReadInt32EndianAware();
                 }
+#pragma warning restore 0162
             }
             return responseDocument;
         }

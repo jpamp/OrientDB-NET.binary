@@ -713,7 +713,7 @@ namespace Orient.Client.Protocol.Serializers
 
                             } while (true);
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             throw;
                         }

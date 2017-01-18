@@ -19,6 +19,7 @@ namespace Orient.Client.Protocol.Operations
             return request;
         }
 
+#pragma warning disable 0612
         public override ODocument Response(Response response)
         {
             ODocument document = new ODocument();
@@ -71,5 +72,6 @@ namespace Orient.Client.Protocol.Operations
 
             return document;
         }
+#pragma warning restore 0612
     }
 }
