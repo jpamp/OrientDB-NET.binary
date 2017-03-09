@@ -30,7 +30,6 @@ namespace Orient.Client.Protocol.Operations
 
             if (_document.ORID == null)
             {
-                var clusterId = _database.GetClusterIdFor(_document.OClassName);
                 _document.ORID = new ORID(-1, -1);
             }
 
