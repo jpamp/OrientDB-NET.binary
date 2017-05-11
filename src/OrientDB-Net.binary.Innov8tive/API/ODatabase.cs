@@ -50,6 +50,7 @@ namespace Orient.Client
         {
             var connection = _connectionPool.GetConnection();
             connection.Database = this;
+            _containsConnection = true;
             return connection;
         }
 
