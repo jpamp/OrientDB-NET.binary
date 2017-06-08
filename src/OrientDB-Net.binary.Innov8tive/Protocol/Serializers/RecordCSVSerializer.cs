@@ -34,12 +34,13 @@ namespace Orient.Client.Protocol.Serializers
 
         internal ODocument Deserialize(ORID orid, int version, ORecordType type, short classId, byte[] rawRecord)
         {
-            ODocument document = new ODocument();
-            document.ORID = orid;
-            document.OVersion = version;
-            document.OType = type;
-            document.OClassId = classId;
-
+            ODocument document = new ODocument()
+            {
+                ORID = orid,
+                OVersion = version,
+                OType = type,
+                OClassId = classId
+            };
             string recordString = BinarySerializer.ToString(rawRecord).Trim();
 
             return Deserialize(recordString, document);
@@ -113,8 +114,7 @@ namespace Orient.Client.Protocol.Serializers
             if (value == null)
                 return string.Empty;
 
-            var bytes = value as byte[];
-            if (bytes != null)
+            if (value is byte[] bytes)
             {
                 return "_" + Convert.ToBase64String(bytes) + "_";
             }
@@ -673,16 +673,22 @@ namespace Orient.Client.Protocol.Serializers
                     {
                         // Changes - (changesSize:int)[(link:rid)(changeType:byte)(value:int)]*
                         var changesSize = reader.ReadInt32EndianAware();
-                        for (int j = 0; j < changesSize; j++)
-                        {
-                            throw new NotImplementedException("RidBag Changes not yet implemented");
-                        }
 
-                        var operation = new SBTreeBonsaiFirstKey(null);
-                        operation.FileId = fileId;
-                        operation.PageIndex = pageIndex;
-                        operation.PageOffset = pageOffset;
-                      
+                        //for (int j = 0; j < changesSize; j++)
+                        //{
+                        //  throw new NotImplementedException("RidBag Changes not yet implemented");
+                        //}
+
+                        if (changesSize > 0)
+                            throw new NotImplementedException("RidBag Changes not yet implemented");
+
+
+                        var operation = new SBTreeBonsaiFirstKey(null)
+                        {
+                            FileId = fileId,
+                            PageIndex = pageIndex,
+                            PageOffset = pageOffset
+                        };
                         var connection = _connection;
 
                         var entries = new Dictionary<ORID, int>();
@@ -693,13 +699,14 @@ namespace Orient.Client.Protocol.Serializers
                             var key = orid.GetField<ORID>("rid");
                             do
                             {
-                                var op = new SBTreeBonsaiGetEntriesMajor(null);
-                                op.FileId = fileId;
-                                op.PageIndex = pageIndex;
-                                op.PageOffset = pageOffset;
-                                op.FirstKey = key;
-                                op.Inclusive = ft;
-
+                                var op = new SBTreeBonsaiGetEntriesMajor(null)
+                                {
+                                    FileId = fileId,
+                                    PageIndex = pageIndex,
+                                    PageOffset = pageOffset,
+                                    FirstKey = key,
+                                    Inclusive = ft
+                                };
                                 var res = connection.ExecuteOperation(op);
                                 entries = res.GetField<Dictionary<ORID, int>>("entries");
 

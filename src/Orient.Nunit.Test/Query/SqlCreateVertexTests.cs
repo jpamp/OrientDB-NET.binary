@@ -46,8 +46,10 @@ namespace Orient.Nunit.Test.Query
                         .Extends<OVertex>()
                         .Run();
 
-                    ODocument document = new ODocument();
-                    document.OClassName = "TestVertexClass";
+                    ODocument document = new ODocument()
+                    {
+                        OClassName = "TestVertexClass"
+                    };
                     document
                         .SetField("foo", "foo string value")
                         .SetField("bar", 12345);
@@ -101,10 +103,11 @@ namespace Orient.Nunit.Test.Query
                         .Extends<OVertex>()
                         .Run();
 
-                    TestProfileClass profile = new TestProfileClass();
-                    profile.Name = "Johny";
-                    profile.Surname = "Bravo";
-
+                    TestProfileClass profile = new TestProfileClass()
+                    {
+                        Name = "Johny",
+                        Surname = "Bravo"
+                    };
                     TestProfileClass createdVertex = database
                         .Create.Vertex(profile)
                         .Run<TestProfileClass>();

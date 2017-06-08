@@ -254,13 +254,14 @@ namespace Orient.Nunit.Test.Query
                         .From<TestVertexClass>()
                         .Skip(2)
                         .Limit(2)
+                        .OrderBy("CustomBar")
                         .ToList();
 
-                    Assert.AreEqual(result.Count, 2);
-                    Assert.AreEqual(result[0].GetField<string>("CustomFoo"), obj3.Foo);
-                    Assert.AreEqual(result[0].GetField<int>("CustomBar"), obj3.Bar);
-                    Assert.AreEqual(result[1].GetField<string>("CustomFoo"), obj4.Foo);
-                    Assert.AreEqual(result[1].GetField<int>("CustomBar"), obj4.Bar);
+                    Assert.AreEqual(2, result.Count);
+                    Assert.AreEqual(obj3.Foo, result[0].GetField<string>("CustomFoo"));
+                    Assert.AreEqual(obj3.Bar, result[0].GetField<int>("CustomBar"));
+                    Assert.AreEqual(obj4.Foo, result[1].GetField<string>("CustomFoo"));
+                    Assert.AreEqual(obj4.Bar, result[1].GetField<int>("CustomBar"));
                 }
             }
         }
