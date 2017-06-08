@@ -110,3 +110,4 @@ UpgradeLog*.XML
 #Xamarin Studio
 *.userprefs
 *.usertasks
+/.vs/slnx.sqlite
