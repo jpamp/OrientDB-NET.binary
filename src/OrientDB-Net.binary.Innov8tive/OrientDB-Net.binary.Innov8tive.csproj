@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <Description>C#/.NET binary driver for OrientDB</Description>
-    <VersionPrefix>0.1.12</VersionPrefix>
+    <VersionPrefix>1.0.0</VersionPrefix>
     <Authors>Gray Delacluyse</Authors>
     <TargetFramework>net452</TargetFramework>
-    <AssemblyName>OrientDB-Net.binary.Innov8tive</AssemblyName>
-    <PackageId>OrientDB-Net.binary.Innov8tive</PackageId>
+    <AssemblyName>Instec.StrawberryMoon.Database.OrientDB.Driver</AssemblyName>
+    <PackageId>Instec.StrawberryMoon.Database.OrientDB.Driver</PackageId>
     <PackageTags>orientdb;database;orient;.net;c#;document;graph</PackageTags>
-    <PackageProjectUrl>https://github.com/Innov8tiveSoftware/OrientDB-NET.binary</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/jpamp/OrientDB-NET.binary</PackageProjectUrl>
     <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
